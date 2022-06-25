@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bs_db?useTimezone=true&serverTimezone=GMT
+    username: root
+    password: 991013
+ # mvc:
+   # hiddenmethod:
+     # filter:
+       # enabled: true   #选择性开启，开启页面表单的Reset风格，前后端分离好像不用开启，因为在客户端就直接发送了另外的请求
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #扫描所有mybatis的xml文件
+  #configuration:
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+

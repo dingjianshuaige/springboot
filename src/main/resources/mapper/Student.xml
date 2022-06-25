@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanghaohang.bs.mapper.StudentMapper">
+
+    <update id="update">
+        update student
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test=" year!= null">
+                year = #{year},
+            </if>
+            <if test="major != null">
+                major = #{major},
+            </if>
+            <if test="cls != null">
+                cls = #{cls},
+            </if>
+            <if test="tel != null">
+                tel = #{tel}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+    
+    <resultMap id="duobiao" type="com.tanghaohang.bs.entity.Student">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="sex" column="sex"></result>
+        <result property="year" column="year"></result>
+        <result property="major" column="major"></result>
+        <result property="cls" column="cls"></result>
+        <collection property="state" javaType="ArrayList" ofType="com.tanghaohang.bs.entity.State">
+
+            <result property="blinks" column="blinks"></result>
+            <result property="yawning" column="yawning"></result>
+        </collection>
+<!--        <association property="state" javaType="com.tanghaohang.bs.entity.State">-->
+<!--            <result property="blinks" column="blinks"></result>-->
+<!--            <result property="yawning" column="yawning"></result>-->
+<!--        </association>-->
+    </resultMap>
+
+<!--    collection一对多查询，对应属性是一个List<>集合 如 private List<State> state-->
+<!--    association是一对一查询,对应的属性就是一个类型变量 如private State state-->
+
+     <!--property表示你的User实体类里的属性，column表示查询出来的sql里面的字段 -->
+     <!--<collection>标签里的property必须跟你的User实体里定义的属性名称一致-->
+    <select id="duobiao" resultMap="duobiao">
+        SELECT student.*,stu_state.blinks,stu_state.yawning
+        FROM student LEFT JOIN stu_state
+        on student.name = stu_state.name
+        where student.id like '%${id}%'
+        <!--where student.id = #{id}-->
+    </select>
+</mapper>

@@ -43,6 +43,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 
             //一次新的修改
+            //github上再次进行修改
         }
 
         //开启事务后发生异常会自动回滚，但是如果将语句用try/catch处理后就不会自动回滚，要么不使用try/catch，

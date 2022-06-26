@@ -39,8 +39,8 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
             //e.printStackTrace();
             log.error("发生错误。");
             //throw e;
-            throw new RuntimeException();
-            //TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            //throw new RuntimeException();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
 
         //开启事务后发生异常会自动回滚，但是如果将语句用try/catch处理后就不会自动回滚，要么不使用try/catch，

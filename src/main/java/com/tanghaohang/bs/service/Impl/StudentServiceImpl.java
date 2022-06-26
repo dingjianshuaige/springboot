@@ -39,7 +39,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
             //e.printStackTrace();
             log.error("发生错误。");
             //throw e;
-            throw new RuntimeException();
+            //throw new RuntimeException();
             //TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
 

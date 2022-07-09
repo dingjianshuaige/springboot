@@ -38,9 +38,9 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
         } catch (Exception e) {
             //e.printStackTrace();
             log.error("发生错误。");
-            //throw e;
+            throw e;
             //throw new RuntimeException();
-            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            //TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 
             //一次新的修改
             //github上再次进行修改
